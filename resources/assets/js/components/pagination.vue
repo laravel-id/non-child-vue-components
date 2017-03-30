@@ -8,7 +8,7 @@
 
 		<li v-if="pagination.next_page_url">
 			<a @click.prevent="load(pagination.next_page_url)" :href="pagination.next_page_url">
-				&raquo; Next
+				Next &raquo;
 			</a>
 		</li>
 	</ul>
