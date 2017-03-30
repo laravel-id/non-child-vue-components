@@ -13,8 +13,29 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+Vue.component('search', require('./components/search.vue'));
+Vue.component('pagination', require('./components/pagination.vue'));
+
+// User
+Vue.component('user-index', require('./components/User/index.vue'));
+
+/*
+ * By extending the Vue prototype with a new '$bus' property
+ * we can easily access our global event bus from any child component.
+ *
+ * @link https://laracasts.com/discuss/channels/vue/use-a-global-event-bus
+ */
+Object.defineProperty(Vue.prototype, '$bus', {
+    get() {
+        return this.$root.bus;
+    }
+});
+
+window.bus = new Vue({});
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+    	bus: bus
+    }
 });
